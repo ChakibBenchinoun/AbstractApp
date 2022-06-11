@@ -8,7 +8,11 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react'
+import clsx from 'clsx'
+import React from 'react'
 import LogoIcon from './components/icons/logo-icon'
+import MenuIcon from './components/icons/menu-icon'
+import SearchIcon from './components/icons/search-icon'
 import styles from './styles/app.css'
 
 export function links() {
@@ -69,24 +73,54 @@ export function Document({
 }
 
 function Layout() {
+  const [showMobileMenu, setShowMobileMenu] = React.useState(true)
   return (
-    <div className="bg-black w-full flex justify-between px-32 py-5">
-      <div className="flex items-center">
-        <Link to="/" className="flex items-center">
-          <LogoIcon className="w-8 h-8 " />
-          <h1 className="text-white text-xl ml-1 font-medium">Abstract</h1>
-        </Link>
-        <Link to="/help-center" className="text-2xl text-white ml-2">
-          | Help Center
-        </Link>
+    <div>
+      <div className="bg-zinc-900 w-full flex justify-between px-5  md:px-24 py-5">
+        <div className="flex items-center">
+          <Link to="/" className="flex items-center">
+            <LogoIcon className="w-8 h-8" />
+            <h1 className="text-gray-400 text-xl ml-2 font-medium">Abstract</h1>
+          </Link>
+          <Link to="/help-center" className="text-2xl text-gray-400 ml-2">
+            | Help Center
+          </Link>
+        </div>
+        <div className="lg:flex hidden">
+          <button className="text-2xl text-white border-2 rounded-md px-5 font-light py-2">
+            Submit a request
+          </button>
+          <button className="text-2xl text-white ml-4 bg-darkBlue rounded-md px-7 font-light py-2">
+            Sign in
+          </button>
+        </div>
+        <div className="lg:hidden flex items-center">
+          <SearchIcon className="text-white w-10 h-10 my-1 mr-3" />
+          <button onClick={() => setShowMobileMenu(!showMobileMenu)}>
+            <MenuIcon
+              isOpen={showMobileMenu}
+              className="text-white w-10 h-10"
+            />
+          </button>
+        </div>
       </div>
-      <div className="flex">
-        <button className="text-2xl text-white border-2 rounded-md px-5 font-light py-2">
-          Submit a request
-        </button>
-        <button className="text-2xl text-white ml-4 bg-darkBlue rounded-md px-7 font-light py-2">
-          Sign in
-        </button>
+      <div
+        className={clsx(
+          showMobileMenu ? 'block' : 'hidden',
+          'bg-zinc-900 border-t border-gray-400 p-10 absolute w-full',
+        )}
+      >
+        <div className="flex items-center justify-center flex-col max-w-sm mx-auto">
+          <Link
+            to="/"
+            className="text-2xl text-gray-400 border-b border-gray-400 py-5 w-full text-center"
+          >
+            Submit a request
+          </Link>
+          <Link to="/" className="text-2xl text-gray-400 py-5">
+            Sign in
+          </Link>
+        </div>
       </div>
     </div>
   )
