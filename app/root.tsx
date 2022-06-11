@@ -7,7 +7,6 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react'
-import {Children} from 'react'
 import styles from './styles/app.css'
 
 export function links() {
