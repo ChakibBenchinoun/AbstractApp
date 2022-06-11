@@ -107,7 +107,7 @@ function Layout() {
       <div
         className={clsx(
           showMobileMenu ? 'block' : 'hidden',
-          'bg-zinc-900 border-t border-gray-400 p-10 absolute w-full',
+          'bg-zinc-900 border-t border-gray-400 p-10 absolute w-full lg:hidden',
         )}
       >
         <div className="flex items-center justify-center flex-col max-w-sm mx-auto">
