@@ -3,8 +3,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#00b289',
-        primaryLight: '#00cc9c',
+        primaryBg: '#dadbf1',
+        darkBlue: '#4C5FD5',
         primaryDark: '#009975',
       },
       boxShadow: {
