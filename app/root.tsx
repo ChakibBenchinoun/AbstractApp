@@ -7,6 +7,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react'
+import {Children} from 'react'
 import styles from './styles/app.css'
 
 export function links() {
@@ -15,19 +16,34 @@ export function links() {
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
-  title: 'New Remix App',
+  title: 'Abstract (Practice)',
   viewport: 'width=device-width,initial-scale=1',
 })
 
-export default function App() {
+export function App() {
+  return (
+    <Document title="Abstract (Practice)">
+      <Outlet />
+    </Document>
+  )
+}
+
+export default function Document({
+  title,
+  children,
+}: {
+  children: React.ReactNode
+  title?: string
+}) {
   return (
     <html lang="en">
       <head>
+        {title ? <title>{title}</title> : null}
         <Meta />
         <Links />
       </head>
       <body>
-        <Outlet />
+        {children}
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
