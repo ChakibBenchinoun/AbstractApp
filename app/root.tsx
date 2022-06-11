@@ -73,7 +73,7 @@ export function Document({
 }
 
 function Layout() {
-  const [showMobileMenu, setShowMobileMenu] = React.useState(true)
+  const [showMobileMenu, setShowMobileMenu] = React.useState(false)
   return (
     <div>
       <div className="bg-zinc-900 w-full flex justify-between px-5  md:px-24 py-5">
